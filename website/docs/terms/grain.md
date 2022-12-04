@@ -27,7 +27,7 @@ In the above table, each `user_id` is unique. This table is at the *user* *grain
 | 2 | 456 Waffle St |
 | 3 | 789 Raffle Rd |
 
-In the above table, `user_id` is no longer unique. The combination of `user_id` and `address` creates a unique combination, thus this table is at the *user* *address* *grain*. We generally describe the grain conceptually based on the names of the columns that make it unique. A more realistic combination you might see in the wild would be a table that capture the state of all users at midnight every day. The combination of the captured `updated_date` and `user_id` would be unique, meaning our table is at *user per day* grain.
+In the above table, `user_id` is no longer unique. The combination of `user_id` and `address` creates a unique combination, thus this table is at the *user* *address* *grain*. We generally describe the grain conceptually based on the names of the columns that make it unique. A more realistic combination you might see in the wild would be a table that captures the state of all users at midnight every day. The combination of the captured `updated_date` and `user_id` would be unique, meaning our table is at *user per day* grain.
 
 In both examples listed in the previous paragraph, we’d want to create a <Term id="surrogate-key" /> of some sort from the combination of columns that comprise the grain. This gives our table a primary key, which is crucial for testing and optimization, and always a best practice. Typically, we’ll name this primary key based on the verbal description of the grain. For the latter example, we’d have `user_per_day_id`. This will be more solid and efficient than testing than repeatedly relying on the combination of those two columns. 
 
