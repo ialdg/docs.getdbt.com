@@ -86,7 +86,7 @@ dbt run --select "my_first_model my_second_model"
 dbt run --select "my_model+"     
 
 # select my_model, its children, and the parents of its children
-dbt run --models @my_model          
+dbt run --select @my_model          
 
 # these arguments can be projects, models, directory paths, tags, or sources
 dbt run --select "tag:nightly my_model finance.base.*"
